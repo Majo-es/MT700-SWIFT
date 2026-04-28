@@ -8,7 +8,7 @@ Built for trade finance students, exporters, importers, and bank operators who n
 
 ## 🌐 Live Demo
 
-> Open `index.html` in any modern browser — no server or build step required.
+> [MT700-SWIFT](https://majo-es.github.io/MT700-SWIFT/)
 
 ---
 
