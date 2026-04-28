@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MT700 SWIFT Fields — Documentary Credit Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom cursor elements  -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot-outline"></div>
+
+  <div class="container">
+
+    <h1>MT700 SWIFT Fields — Documentary Credit</h1>
+    <p class="subtitle">Click any card to expand. UCP 600 reference guide.</p>
+
+    <input
+      class="search-bar"
+      type="text"
+      id="search"
+      placeholder="Search by field number or name..."
+      oninput="filterCards()"
+    />
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#378ADD"></div>
+        Bank-to-bank
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#639922"></div>
+        Exporter
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#7F77DD"></div>
+        All parties
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#BA7517"></div>
+        Dates &amp; deadlines
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#D85A30"></div>
+        Documents
+      </div>
+    </div>
+
+    <!-- Cards  -->
+    <div id="sections"></div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
