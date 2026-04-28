@@ -1,0 +1,316 @@
+/* ============================================================
+   RESET & ROOT VARIABLES
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #1a1a18;
+  --primary-light: 95, 94, 90; /* RGB components used for rgba() */
+}
+
+
+/* ============================================================
+   GLOBAL CURSOR — hide default, show custom
+   ============================================================ */
+html,
+body,
+html *,
+body * {
+  cursor: none;
+}
+
+
+/* ============================================================
+   CUSTOM CURSOR ELEMENTS
+   ============================================================ */
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  opacity: 0;
+  /* no translate here -> transform is driven by JS */
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+}
+
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(var(--primary-light), 0.5);
+}
+
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  font-family: 'Space Mono', monospace;
+  background: #f5f4f0;
+  color: #1a1a18;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #1a1a18;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888780;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 720px;
+}
+
+.section {
+  margin-bottom: 1.75rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+.search-bar {
+  width: 100%;
+  max-width: 680px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 0.5px solid #b4b2a9;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1a1a18;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #5f5e5a;
+}
+
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  max-width: 680px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #5f5e5a;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888780;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid #d3d1c7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-count {
+  font-size: 11px;
+  color: #b4b2a9;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+  background: #ffffff;
+  border: 0.5px solid #d3d1c7;
+  border-radius: 12px;
+  padding: 12px 14px;
+  /* cursor: pointer removed — global cursor:none overrides it anyway */
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: #888780;
+}
+
+.card.expanded {
+  border-color: #5f5e5a;
+}
+
+/* Card header row */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Field code chip */
+.field-code {
+  font-size: 13px;
+  font-weight: 700;
+  background: #f1efe8;
+  border: 0.5px solid #d3d1c7;
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  color: #1a1a18;
+  flex-shrink: 0;
+}
+
+/* Name + subtitle column */
+.field-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.field-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a18;
+  line-height: 1.4;
+}
+
+.field-sub {
+  font-size: 12px;
+  color: #888780;
+  margin-top: 2px;
+}
+
+/* Card body — hidden until .expanded */
+.card-body {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid #d3d1c7;
+  display: none;
+}
+
+.card.expanded .card-body {
+  display: block;
+}
+
+.desc {
+  font-size: 13px;
+  color: #5f5e5a;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.example {
+  background: #f1efe8;
+  border-left: 2px solid #b4b2a9;
+  border-radius: 0 6px 6px 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #5f5e5a;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 8px;
+}
+
+.tip {
+  font-size: 12px;
+  color: #185FA5;
+  background: #E6F1FB;
+  border-radius: 8px;
+  padding: 6px 10px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.badge-bank     { background: #E6F1FB; color: #0C447C; }
+.badge-exporter { background: #EAF3DE; color: #27500A; }
+.badge-both     { background: #EEEDFE; color: #3C3489; }
+.badge-dates    { background: #FAEEDA; color: #633806; }
+.badge-docs     { background: #FAECE7; color: #712B13; }
+
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #b4b2a9;
+  font-size: 14px;
+}
